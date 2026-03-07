@@ -18,8 +18,6 @@
     --muted: #5a6180;
     --label: #8892b0;
     --sell: #ff4d6a;
-    --gold: #ffd166;
-    --silver: #c0c8d8;
   }
   * { margin:0; padding:0; box-sizing:border-box; text-align:center; }
   input, select { text-align:left; }
@@ -45,206 +43,65 @@
     pointer-events:none;
     z-index:0;
   }
+  .page { max-width:1100px; margin:0 auto; position:relative; z-index:1; }
 
-  .page { max-width: 1100px; margin: 0 auto; position: relative; z-index:1; }
+  .row-header { text-align:center; margin-bottom:40px; }
+  .row-header h1 { font-size:38px; font-weight:900; color:var(--text); font-family:'Merriweather',serif; line-height:1.2; }
+  .row-header .by-line { font-size:18px; color:var(--accent); letter-spacing:.1em; text-transform:uppercase; margin-top:4px; font-family:'Space Mono',monospace; font-weight:700; }
 
-  /* ── ROW 1: HEADER ── */
-  .row-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .row-header h1 {
-    font-size: 38px;
-    font-weight: 900;
-    color: var(--text);
-    font-family: 'Merriweather', serif;
-    line-height: 1.2;
-  }
-  .row-header .by-line {
-    font-size: 18px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 4px;
-    font-family: 'Space Mono', monospace;
-    font-weight: 700;
-  }
+  .row-badge { margin-bottom:14px; }
+  #pip-badge { background:var(--card); border:1px solid var(--border-bright); border-radius:8px; padding:12px 20px; display:flex; gap:32px; flex-wrap:wrap; align-items:center; justify-content:center; }
+  .pip-badge-item { display:flex; flex-direction:column; gap:3px; }
+  .pip-label { font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); font-family:'Space Mono',monospace; }
+  .pip-value { font-size:14px; font-family:'Space Mono',monospace; color:var(--accent); white-space:nowrap; }
+  .pip-size-info { font-size:12px; color:var(--muted); font-family:'Space Mono',monospace; }
 
-  /* ── ROW 2: PIP BADGE ── */
-  .row-badge { margin-bottom: 14px; }
-  #pip-badge {
-    background: var(--card);
-    border: 1px solid var(--border-bright);
-    border-radius: 8px;
-    padding: 12px 20px;
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .pip-badge-item { display: flex; flex-direction: column; gap: 3px; }
-  .pip-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-family: 'Space Mono', monospace; }
-  .pip-value { font-size: 14px; font-family: 'Space Mono', monospace; color: var(--accent); white-space: nowrap; }
-  .pip-size-info { font-size: 12px; color: var(--muted); font-family: 'Space Mono', monospace; }
+  .row-pair { margin-bottom:14px; }
+  .row-main { display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:start; }
+  @media(max-width:720px){ .row-main{grid-template-columns:1fr;} #pip-badge{gap:16px;} }
 
-  /* ── ROW 3: PAIR SELECTOR ── */
-  .row-pair { margin-bottom: 14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; margin-bottom:14px; }
+  .card:last-child { margin-bottom:0; }
+  .section-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; font-family:'Space Mono',monospace; }
 
-  /* ── ROW 4: TWO COLUMNS ── */
-  .row-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    align-items: start;
-  }
-  @media (max-width: 720px) {
-    .row-main { grid-template-columns: 1fr; }
-    #pip-badge { gap: 16px; }
-  }
-
-  /* ── CARD ── */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-    margin-bottom: 14px;
-  }
-  .card:last-child { margin-bottom: 0; }
-  .section-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
-    font-family: 'Space Mono', monospace;
-  }
-
-  /* ── SELECT ── */
-  .select-wrap { position: relative; }
-  .select-wrap::after {
-    content:'▾';
-    position:absolute;
-    right:14px;
-    top:50%;
-    transform:translateY(-50%);
-    color:var(--accent);
-    pointer-events:none;
-    font-size:14px;
-  }
-  select {
-    width:100%;
-    background:var(--surface);
-    border:1px solid var(--border-bright);
-    color:var(--text);
-    font-family:'Space Mono',monospace;
-    font-size:14px;
-    font-weight:700;
-    padding:12px 40px 12px 14px;
-    border-radius:8px;
-    appearance:none;
-    cursor:pointer;
-    transition:border-color .2s;
-    letter-spacing:.05em;
-  }
+  .select-wrap { position:relative; }
+  .select-wrap::after { content:'▾'; position:absolute; right:14px; top:50%; transform:translateY(-50%); color:var(--accent); pointer-events:none; font-size:14px; }
+  select { width:100%; background:var(--surface); border:1px solid var(--border-bright); color:var(--text); font-family:'Space Mono',monospace; font-size:14px; font-weight:700; padding:12px 40px 12px 14px; border-radius:8px; appearance:none; cursor:pointer; transition:border-color .2s; letter-spacing:.05em; }
   select:focus { outline:none; border-color:var(--accent); }
   select option { background:#111318; color:#fff; }
 
-  /* ── TOGGLE ── */
   .toggle-row { display:flex; gap:8px; margin-bottom:16px; }
-  .toggle-btn {
-    flex:1;
-    background:var(--surface);
-    border:1px solid var(--border-bright);
-    color:var(--muted);
-    font-family:'Space Mono',monospace;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    padding:10px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:all .2s;
-  }
+  .toggle-btn { flex:1; background:var(--surface); border:1px solid var(--border-bright); color:var(--muted); font-family:'Space Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:10px; border-radius:8px; cursor:pointer; transition:all .2s; }
   .toggle-btn.active { background:var(--accent-dim); border-color:var(--accent); color:var(--accent); }
   .toggle-btn:hover:not(.active) { color:var(--text); }
 
-  /* ── INPUTS ── */
   .input-group { margin-bottom:14px; }
   .input-group:last-child { margin-bottom:0; }
-  .input-label {
-    font-size:10px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--label);
-    font-family:'Space Mono',monospace;
-    margin-bottom:7px;
-    display:block;
-  }
+  .input-label { font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--label); font-family:'Space Mono',monospace; margin-bottom:7px; display:block; }
   .input-wrap { position:relative; }
-  input[type="number"] {
-    width:100%;
-    background:var(--surface);
-    border:1px solid var(--border-bright);
-    color:var(--text);
-    font-family:'Space Mono',monospace;
-    font-size:16px;
-    font-weight:700;
-    padding:12px 50px 12px 14px;
-    border-radius:8px;
-    transition:border-color .2s;
-    -moz-appearance:textfield;
-  }
+  input[type="number"] { width:100%; background:var(--surface); border:1px solid var(--border-bright); color:var(--text); font-family:'Space Mono',monospace; font-size:16px; font-weight:700; padding:12px 50px 12px 14px; border-radius:8px; transition:border-color .2s; -moz-appearance:textfield; }
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button { -webkit-appearance:none; }
   input[type="number"]:focus { outline:none; border-color:var(--accent); }
   input[type="number"]::placeholder { color:rgba(0,0,0,0.35); }
-  .input-unit {
-    position:absolute;
-    right:12px;
-    top:50%;
-    transform:translateY(-50%);
-    font-size:10px;
-    color:var(--muted);
-    font-family:'Space Mono',monospace;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    pointer-events:none;
-  }
+  .input-unit { position:absolute; right:12px; top:50%; transform:translateY(-50%); font-size:10px; color:var(--muted); font-family:'Space Mono',monospace; letter-spacing:.06em; text-transform:uppercase; pointer-events:none; }
   .input-row { display:flex; gap:10px; }
   .input-row .input-group { flex:1; margin-bottom:0; }
 
-  /* ── PRICE PANEL ── */
   #price-panel { display:none; }
   #price-panel.visible { display:block; }
   #pips-panel.hidden { display:none; }
-  .calculated-pips {
-    background:var(--surface);
-    border:1px solid var(--border-bright);
-    border-radius:8px;
-    padding:10px 14px;
-    margin-top:10px;
-    display:none;
-  }
+  .calculated-pips { background:var(--surface); border:1px solid var(--border-bright); border-radius:8px; padding:10px 14px; margin-top:10px; display:none; }
   .calculated-pips.visible { display:flex; align-items:center; justify-content:space-between; }
   .calculated-pips span:first-child { font-size:10px; color:var(--muted); font-family:'Space Mono',monospace; text-transform:uppercase; letter-spacing:.08em; }
   .calculated-pips span:last-child { font-size:14px; font-family:'Space Mono',monospace; font-weight:700; color:var(--accent); }
 
-  /* ── RISK ROW ── */
   .risk-row { display:flex; gap:10px; align-items:flex-end; }
   .risk-row .input-group { flex:1; margin-bottom:0; }
   .currency-select-wrap { width:90px; flex-shrink:0; }
   .currency-select-wrap select { padding:12px 28px 12px 10px; font-size:13px; }
 
-  /* ── RESULT CARD ── */
-  #result-card {
-    display:none;
-    border:1px solid var(--accent);
-    background:linear-gradient(135deg,rgba(0,229,160,0.06) 0%,rgba(0,229,160,0.02) 100%);
-    animation:fadeUp .35s ease;
-  }
+  #result-card { display:none; border:1px solid var(--accent); background:linear-gradient(135deg,rgba(0,229,160,0.06) 0%,rgba(0,229,160,0.02) 100%); animation:fadeUp .35s ease; }
   #result-card.visible { display:block; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
   .result-label { font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-family:'Space Mono',monospace; margin-bottom:8px; }
@@ -255,8 +112,7 @@
   .breakdown-item .b-value { font-size:13px; font-family:'Space Mono',monospace; font-weight:700; color:var(--text); }
   .divider { height:1px; background:var(--border); margin:16px 0; }
 
-  /* ── ACTUAL PANEL ── */
-  .actual-col { display: flex; flex-direction: column; }
+  .actual-col { display:flex; flex-direction:column; }
   .actual-heading { font-family:'Merriweather',serif; font-size:18px; font-weight:700; color:var(--text); margin-bottom:14px; line-height:1.3; }
   .actual-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; margin-bottom:14px; }
   .actual-card:last-child { margin-bottom:0; }
@@ -272,23 +128,20 @@
   .diff-note { font-size:11px; font-family:'Space Mono',monospace; color:var(--muted); margin-top:10px; line-height:1.8; padding:10px; background:rgba(0,0,0,0.15); border-radius:6px; }
   .diff-note span { color:var(--accent); font-weight:700; }
   .actual-placeholder { font-size:12px; font-family:'Space Mono',monospace; color:var(--muted); text-align:center; padding:40px 20px; line-height:1.9; }
-
-  /* ── DISCLAIMER ── */
   .disclaimer { font-size:10px; color:var(--muted); font-family:'Space Mono',monospace; text-align:center; line-height:1.7; margin-top:16px; }
-
-
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- ROW 1: HEADER -->
-  <div class="row-header">
-    <h1>LOT SIZE CALCULATOR</h1>
-    <div class="by-line">by PK</div>
+<div class="row-header">
+    <div>
+      <h1>LOT SIZE CALCULATOR</h1>
+      <div class="by-line">by PK</div>
+    </div>
+  </div>
   </div>
 
-  <!-- ROW 2: PIP BADGE -->
   <div class="row-badge">
     <div id="pip-badge">
       <div class="pip-badge-item">
@@ -305,7 +158,6 @@
     </div>
   </div>
 
-  <!-- ROW 3: CURRENCY PAIR -->
   <div class="row-pair">
     <div class="card">
       <div class="section-label">Currency Pair</div>
@@ -321,12 +173,9 @@
             <option value="XAGUSD">XAG/USD — Silver</option>
           </optgroup>
           <optgroup label="Majors">
-            <option value="EURUSD">EUR/USD</option>
-            <option value="GBPUSD">GBP/USD</option>
-            <option value="AUDUSD">AUD/USD</option>
-            <option value="NZDUSD">NZD/USD</option>
-            <option value="USDJPY">USD/JPY</option>
-            <option value="USDCHF">USD/CHF</option>
+            <option value="EURUSD">EUR/USD</option><option value="GBPUSD">GBP/USD</option>
+            <option value="AUDUSD">AUD/USD</option><option value="NZDUSD">NZD/USD</option>
+            <option value="USDJPY">USD/JPY</option><option value="USDCHF">USD/CHF</option>
             <option value="USDCAD">USD/CAD</option>
           </optgroup>
           <optgroup label="EUR Crosses">
@@ -384,13 +233,9 @@
     </div>
   </div>
 
-  <!-- ROW 4: TWO COLUMNS -->
   <div class="row-main">
 
-    <!-- COL 1: Controls + Result -->
     <div class="left-col">
-
-      <!-- Stop Loss Distance -->
       <div class="card">
         <div class="section-label">Stop Loss Distance</div>
         <div class="toggle-row">
@@ -428,7 +273,6 @@
         </div>
       </div>
 
-      <!-- Risk Amount -->
       <div class="card">
         <div class="section-label">Risk Amount</div>
         <div class="risk-row">
@@ -450,9 +294,15 @@
             </div>
           </div>
         </div>
+        <div style="margin-top:14px;">
+          <label class="input-label">Risk to Reward Ratio (RR)</label>
+          <div class="input-wrap">
+            <input type="number" id="rr-input" placeholder="e.g. 2.1" min="0.1" step="0.1" style="width:100%;background:var(--surface);border:1px solid var(--border-bright);color:var(--text);font-family:'Space Mono',monospace;font-size:16px;font-weight:700;padding:12px 50px 12px 14px;border-radius:8px;transition:border-color .2s;-moz-appearance:textfield;">
+            <span class="input-unit">RR</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Recommended Lot Size -->
       <div class="card" id="result-card">
         <div class="result-label">Recommended Lot Size</div>
         <div class="result-value" id="result-lots">—</div>
@@ -469,9 +319,8 @@
         </div>
       </div>
 
-    </div><!-- /left-col -->
+    </div>
 
-    <!-- COL 2: Actual Risk -->
     <div class="actual-col">
       <div class="actual-heading">How much you are actually risking</div>
 
@@ -480,22 +329,47 @@
         <div class="actual-big-value" id="actual-risk-value">-</div>
         <div class="actual-big-unit" id="actual-risk-unit"></div>
         <div class="diff-note" id="actual-diff-note"></div>
+        <div id="actual-rr-profit-block" style="display:none;margin-top:14px;padding-top:14px;border-top:1px solid rgba(167,139,250,0.25);">
+          <div class="actual-big-label" style="color:#a78bfa;margin-bottom:12px;">Actual Profit (at RR <span id="actual-rr-label">—</span>)</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="text-align:center;">
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-family:'Space Mono',monospace;margin-bottom:6px;">Profit</div>
+              <div style="font-size:32px;font-weight:800;color:#a78bfa;font-family:'Space Mono',monospace;line-height:1;" id="actual-profit-value">—</div>
+              <div style="font-size:12px;color:var(--muted);font-family:'Space Mono',monospace;margin-top:4px;" id="actual-profit-unit"></div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-family:'Space Mono',monospace;margin-bottom:6px;">Reward Pips</div>
+              <div style="font-size:32px;font-weight:800;color:#a78bfa;font-family:'Space Mono',monospace;line-height:1;" id="rr-reward-pips">—</div>
+              <div style="font-size:12px;color:var(--muted);font-family:'Space Mono',monospace;margin-top:4px;">pips</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="actual-card" id="actual-nearby-card" style="display:none;">
         <div class="actual-big-label" style="margin-bottom:12px;">Nearby Lot Sizes</div>
-        <div class="actual-row">
+        <div class="actual-row" style="flex-wrap:wrap;gap:4px;">
           <span class="actual-label" id="nearby-low-label">— lots</span>
-          <span class="actual-value" id="nearby-low-value" style="font-size:14px;">—</span>
+          <span style="display:flex;gap:10px;align-items:center;">
+            <span class="actual-value" id="nearby-low-value" style="font-size:14px;">—</span>
+            <span class="actual-value" id="nearby-low-profit" style="font-size:13px;color:#a78bfa;display:none;"></span>
+          </span>
         </div>
-        <div class="actual-row" style="background:rgba(0,229,160,0.05);border-radius:6px;padding:10px;margin:4px 0;border:1px solid rgba(0,229,160,0.2);">
+        <div class="actual-row" style="background:rgba(0,229,160,0.05);border-radius:6px;padding:10px;margin:4px 0;border:1px solid rgba(0,229,160,0.2);flex-wrap:wrap;gap:4px;">
           <span class="actual-label" style="color:var(--accent);" id="nearby-mid-label">— lots (recommended)</span>
-          <span class="actual-value accent" id="nearby-mid-value" style="font-size:14px;">—</span>
+          <span style="display:flex;gap:10px;align-items:center;">
+            <span class="actual-value accent" id="nearby-mid-value" style="font-size:14px;">—</span>
+            <span class="actual-value" id="nearby-mid-profit" style="font-size:13px;color:#a78bfa;display:none;"></span>
+          </span>
         </div>
-        <div class="actual-row">
+        <div class="actual-row" style="flex-wrap:wrap;gap:4px;">
           <span class="actual-label" id="nearby-high-label">— lots</span>
-          <span class="actual-value" id="nearby-high-value" style="font-size:14px;">—</span>
+          <span style="display:flex;gap:10px;align-items:center;">
+            <span class="actual-value" id="nearby-high-value" style="font-size:14px;">—</span>
+            <span class="actual-value" id="nearby-high-profit" style="font-size:13px;color:#a78bfa;display:none;"></span>
+          </span>
         </div>
+        <div id="nearby-rr-legend" style="display:none;margin-top:10px;font-size:10px;font-family:'Space Mono',monospace;color:#a78bfa;letter-spacing:.06em;">▶ PURPLE = PROFIT AT RR</div>
       </div>
 
       <div class="actual-card" id="actual-detail-card" style="display:none;">
@@ -508,89 +382,90 @@
       <div class="actual-card" id="actual-placeholder-card">
         <div class="actual-placeholder">Select a pair and enter<br>your stop loss and risk amount<br>to see your actual<br>risk exposure.</div>
       </div>
-    </div><!-- /actual-col -->
+    </div>
 
-  </div><!-- /row-main -->
+  </div>
 
   <p class="disclaimer">
     Pip values are approximate. Always verify with your broker.<br>
-    Non-USD risk amounts converted using indicative rates.
+    Non-USD risk amounts converted using indicative rates.<br>
+    Actual values may vary slightly due to broker spreads and execution prices.
   </p>
 
-</div><!-- /page -->
+</div>
 
 <script>
-const PAIRS = {
-  NAS100:{pipSize:1.0,pipValueUSD:1.00,label:'NAS100',note:'1 pip = 1.0 point · ~$1/pip/lot'},
-  US500:{pipSize:0.1,pipValueUSD:1.00,label:'US500',note:'1 pip = 0.1 point · ~$1/pip/lot'},
-  XAUUSD:{pipSize:0.1,pipValueUSD:10.00,label:'XAU/USD',note:'1 pip = $0.10 · 1 lot = 100 oz'},
-  XAGUSD:{pipSize:0.01,pipValueUSD:50.00,label:'XAG/USD',note:'1 pip = $0.01 · 1 lot = 5,000 oz'},
-  EURUSD:{pipSize:0.0001,pipValueUSD:10.00,label:'EUR/USD',note:'1 pip = 0.0001 · 1 lot = 100,000'},
-  GBPUSD:{pipSize:0.0001,pipValueUSD:10.00,label:'GBP/USD',note:'1 pip = 0.0001 · 1 lot = 100,000'},
-  AUDUSD:{pipSize:0.0001,pipValueUSD:10.00,label:'AUD/USD',note:'1 pip = 0.0001 · 1 lot = 100,000'},
-  NZDUSD:{pipSize:0.0001,pipValueUSD:10.00,label:'NZD/USD',note:'1 pip = 0.0001 · 1 lot = 100,000'},
-  USDJPY:{pipSize:0.01,pipValueUSD:6.58,label:'USD/JPY',note:'1 pip = 0.01 · ~$6.58/pip/lot'},
-  USDCHF:{pipSize:0.0001,pipValueUSD:11.20,label:'USD/CHF',note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
-  USDCAD:{pipSize:0.0001,pipValueUSD:7.30,label:'USD/CAD',note:'1 pip = 0.0001 · ~$7.30/pip/lot'},
-  USDCNH:{pipSize:0.0001,pipValueUSD:1.39,label:'USD/CNH',note:'1 pip = 0.0001 · ~$1.39/pip/lot'},
-  USDCZK:{pipSize:0.0001,pipValueUSD:0.044,label:'USD/CZK',note:'1 pip = 0.0001 · ~$0.044/pip/lot'},
-  USDDKK:{pipSize:0.0001,pipValueUSD:1.44,label:'USD/DKK',note:'1 pip = 0.0001 · ~$1.44/pip/lot'},
-  USDMXN:{pipSize:0.0001,pipValueUSD:0.50,label:'USD/MXN',note:'1 pip = 0.0001 · ~$0.50/pip/lot'},
-  USDNOK:{pipSize:0.0001,pipValueUSD:0.92,label:'USD/NOK',note:'1 pip = 0.0001 · ~$0.92/pip/lot'},
-  USDPLN:{pipSize:0.0001,pipValueUSD:2.44,label:'USD/PLN',note:'1 pip = 0.0001 · ~$2.44/pip/lot'},
-  USDSEK:{pipSize:0.0001,pipValueUSD:0.93,label:'USD/SEK',note:'1 pip = 0.0001 · ~$0.93/pip/lot'},
-  USDSGD:{pipSize:0.0001,pipValueUSD:7.45,label:'USD/SGD',note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
-  USDTHB:{pipSize:0.0001,pipValueUSD:0.29,label:'USD/THB',note:'1 pip = 0.0001 · ~$0.29/pip/lot'},
-  USDTRY:{pipSize:0.0001,pipValueUSD:0.029,label:'USD/TRY',note:'1 pip = 0.0001 · ~$0.029/pip/lot'},
-  USDZAR:{pipSize:0.0001,pipValueUSD:0.55,label:'USD/ZAR',note:'1 pip = 0.0001 · ~$0.55/pip/lot'},
-  EURAUD:{pipSize:0.0001,pipValueUSD:6.40,label:'EUR/AUD',note:'1 pip = 0.0001 · ~$6.40/pip/lot'},
-  EURCAD:{pipSize:0.0001,pipValueUSD:7.30,label:'EUR/CAD',note:'1 pip = 0.0001 · ~$7.30/pip/lot'},
-  EURCHF:{pipSize:0.0001,pipValueUSD:11.20,label:'EUR/CHF',note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
-  EURCZK:{pipSize:0.0001,pipValueUSD:0.044,label:'EUR/CZK',note:'1 pip = 0.0001 · ~$0.044/pip/lot'},
-  EURDKK:{pipSize:0.0001,pipValueUSD:1.44,label:'EUR/DKK',note:'1 pip = 0.0001 · ~$1.44/pip/lot'},
-  EURGBP:{pipSize:0.0001,pipValueUSD:12.60,label:'EUR/GBP',note:'1 pip = 0.0001 · ~$12.60/pip/lot'},
-  EURHKD:{pipSize:0.0001,pipValueUSD:1.28,label:'EUR/HKD',note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
-  EURHUF:{pipSize:0.01,pipValueUSD:0.0027,label:'EUR/HUF',note:'1 pip = 0.01 · ~$0.0027/pip/lot'},
-  EURJPY:{pipSize:0.01,pipValueUSD:6.58,label:'EUR/JPY',note:'1 pip = 0.01 · ~$6.58/pip/lot'},
-  EURNOK:{pipSize:0.0001,pipValueUSD:0.92,label:'EUR/NOK',note:'1 pip = 0.0001 · ~$0.92/pip/lot'},
-  EURNZD:{pipSize:0.0001,pipValueUSD:5.95,label:'EUR/NZD',note:'1 pip = 0.0001 · ~$5.95/pip/lot'},
-  EURPLN:{pipSize:0.0001,pipValueUSD:2.44,label:'EUR/PLN',note:'1 pip = 0.0001 · ~$2.44/pip/lot'},
-  EURSEK:{pipSize:0.0001,pipValueUSD:0.93,label:'EUR/SEK',note:'1 pip = 0.0001 · ~$0.93/pip/lot'},
-  EURSGD:{pipSize:0.0001,pipValueUSD:7.45,label:'EUR/SGD',note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
-  EURTRY:{pipSize:0.0001,pipValueUSD:0.029,label:'EUR/TRY',note:'1 pip = 0.0001 · ~$0.029/pip/lot'},
-  EURZAR:{pipSize:0.0001,pipValueUSD:0.55,label:'EUR/ZAR',note:'1 pip = 0.0001 · ~$0.55/pip/lot'},
-  GBPAUD:{pipSize:0.0001,pipValueUSD:6.40,label:'GBP/AUD',note:'1 pip = 0.0001 · ~$6.40/pip/lot'},
-  GBPCAD:{pipSize:0.0001,pipValueUSD:7.30,label:'GBP/CAD',note:'1 pip = 0.0001 · ~$7.30/pip/lot'},
-  GBPCHF:{pipSize:0.0001,pipValueUSD:11.20,label:'GBP/CHF',note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
-  GBPHKD:{pipSize:0.0001,pipValueUSD:1.28,label:'GBP/HKD',note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
-  GBPJPY:{pipSize:0.01,pipValueUSD:6.58,label:'GBP/JPY',note:'1 pip = 0.01 · ~$6.58/pip/lot'},
-  GBPNZD:{pipSize:0.0001,pipValueUSD:5.95,label:'GBP/NZD',note:'1 pip = 0.0001 · ~$5.95/pip/lot'},
-  GBPPLN:{pipSize:0.0001,pipValueUSD:2.44,label:'GBP/PLN',note:'1 pip = 0.0001 · ~$2.44/pip/lot'},
-  GBPSGD:{pipSize:0.0001,pipValueUSD:7.45,label:'GBP/SGD',note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
-  GBPZAR:{pipSize:0.0001,pipValueUSD:0.55,label:'GBP/ZAR',note:'1 pip = 0.0001 · ~$0.55/pip/lot'},
-  AUDCAD:{pipSize:0.0001,pipValueUSD:7.30,label:'AUD/CAD',note:'1 pip = 0.0001 · ~$7.30/pip/lot'},
-  AUDCHF:{pipSize:0.0001,pipValueUSD:11.20,label:'AUD/CHF',note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
-  AUDHKD:{pipSize:0.0001,pipValueUSD:1.28,label:'AUD/HKD',note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
-  AUDJPY:{pipSize:0.01,pipValueUSD:6.58,label:'AUD/JPY',note:'1 pip = 0.01 · ~$6.58/pip/lot'},
-  AUDNZD:{pipSize:0.0001,pipValueUSD:5.95,label:'AUD/NZD',note:'1 pip = 0.0001 · ~$5.95/pip/lot'},
-  AUDSGD:{pipSize:0.0001,pipValueUSD:7.45,label:'AUD/SGD',note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
-  NZDCAD:{pipSize:0.0001,pipValueUSD:7.30,label:'NZD/CAD',note:'1 pip = 0.0001 · ~$7.30/pip/lot'},
-  NZDCHF:{pipSize:0.0001,pipValueUSD:11.20,label:'NZD/CHF',note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
-  NZDHKD:{pipSize:0.0001,pipValueUSD:1.28,label:'NZD/HKD',note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
-  NZDJPY:{pipSize:0.01,pipValueUSD:6.58,label:'NZD/JPY',note:'1 pip = 0.01 · ~$6.58/pip/lot'},
-  NZDSGD:{pipSize:0.0001,pipValueUSD:7.45,label:'NZD/SGD',note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
-  CADCHF:{pipSize:0.0001,pipValueUSD:11.20,label:'CAD/CHF',note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
-  CADHKD:{pipSize:0.0001,pipValueUSD:1.28,label:'CAD/HKD',note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
-  CADJPY:{pipSize:0.01,pipValueUSD:6.58,label:'CAD/JPY',note:'1 pip = 0.01 · ~$6.58/pip/lot'},
-  CADSGD:{pipSize:0.0001,pipValueUSD:7.45,label:'CAD/SGD',note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
-  CHFHKD:{pipSize:0.0001,pipValueUSD:1.28,label:'CHF/HKD',note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
-  CHFJPY:{pipSize:0.01,pipValueUSD:6.58,label:'CHF/JPY',note:'1 pip = 0.01 · ~$6.58/pip/lot'},
-  CHFZAR:{pipSize:0.0001,pipValueUSD:0.55,label:'CHF/ZAR',note:'1 pip = 0.0001 · ~$0.55/pip/lot'},
-  SGDCHF:{pipSize:0.0001,pipValueUSD:11.20,label:'SGD/CHF',note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
-  SGDJPY:{pipSize:0.01,pipValueUSD:6.58,label:'SGD/JPY',note:'1 pip = 0.01 · ~$6.58/pip/lot'},
-  HKDJPY:{pipSize:0.0001,pipValueUSD:0.84,label:'HKD/JPY',note:'1 pip = 0.0001 · ~$0.84/pip/lot'},
-  TRYJPY:{pipSize:0.0001,pipValueUSD:0.19,label:'TRY/JPY',note:'1 pip = 0.0001 · ~$0.19/pip/lot'},
-  ZARJPY:{pipSize:0.0001,pipValueUSD:0.36,label:'ZAR/JPY',note:'1 pip = 0.0001 · ~$0.36/pip/lot'},
+const PAIRS={
+  NAS100:{pipSize:1.0,pipValueUSD:1.00,note:'1 pip = 1.0 point · ~$1/pip/lot'},
+  US500:{pipSize:0.1,pipValueUSD:1.00,note:'1 pip = 0.1 point · ~$1/pip/lot'},
+  XAUUSD:{pipSize:0.1,pipValueUSD:10.00,note:'1 pip = $0.10 · 1 lot = 100 oz'},
+  XAGUSD:{pipSize:0.01,pipValueUSD:50.00,note:'1 pip = $0.01 · 1 lot = 5,000 oz'},
+  EURUSD:{pipSize:0.0001,pipValueUSD:10.00,note:'1 pip = 0.0001 · 1 lot = 100,000'},
+  GBPUSD:{pipSize:0.0001,pipValueUSD:10.00,note:'1 pip = 0.0001 · 1 lot = 100,000'},
+  AUDUSD:{pipSize:0.0001,pipValueUSD:10.00,note:'1 pip = 0.0001 · 1 lot = 100,000'},
+  NZDUSD:{pipSize:0.0001,pipValueUSD:10.00,note:'1 pip = 0.0001 · 1 lot = 100,000'},
+  USDJPY:{pipSize:0.01,pipValueUSD:6.58,note:'1 pip = 0.01 · ~$6.58/pip/lot'},
+  USDCHF:{pipSize:0.0001,pipValueUSD:11.20,note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
+  USDCAD:{pipSize:0.0001,pipValueUSD:7.30,note:'1 pip = 0.0001 · ~$7.30/pip/lot'},
+  USDCNH:{pipSize:0.0001,pipValueUSD:1.39,note:'1 pip = 0.0001 · ~$1.39/pip/lot'},
+  USDCZK:{pipSize:0.0001,pipValueUSD:0.044,note:'1 pip = 0.0001 · ~$0.044/pip/lot'},
+  USDDKK:{pipSize:0.0001,pipValueUSD:1.44,note:'1 pip = 0.0001 · ~$1.44/pip/lot'},
+  USDMXN:{pipSize:0.0001,pipValueUSD:0.50,note:'1 pip = 0.0001 · ~$0.50/pip/lot'},
+  USDNOK:{pipSize:0.0001,pipValueUSD:0.92,note:'1 pip = 0.0001 · ~$0.92/pip/lot'},
+  USDPLN:{pipSize:0.0001,pipValueUSD:2.44,note:'1 pip = 0.0001 · ~$2.44/pip/lot'},
+  USDSEK:{pipSize:0.0001,pipValueUSD:0.93,note:'1 pip = 0.0001 · ~$0.93/pip/lot'},
+  USDSGD:{pipSize:0.0001,pipValueUSD:7.45,note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
+  USDTHB:{pipSize:0.0001,pipValueUSD:0.29,note:'1 pip = 0.0001 · ~$0.29/pip/lot'},
+  USDTRY:{pipSize:0.0001,pipValueUSD:0.029,note:'1 pip = 0.0001 · ~$0.029/pip/lot'},
+  USDZAR:{pipSize:0.0001,pipValueUSD:0.55,note:'1 pip = 0.0001 · ~$0.55/pip/lot'},
+  EURAUD:{pipSize:0.0001,pipValueUSD:6.40,note:'1 pip = 0.0001 · ~$6.40/pip/lot'},
+  EURCAD:{pipSize:0.0001,pipValueUSD:7.30,note:'1 pip = 0.0001 · ~$7.30/pip/lot'},
+  EURCHF:{pipSize:0.0001,pipValueUSD:11.20,note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
+  EURCZK:{pipSize:0.0001,pipValueUSD:0.044,note:'1 pip = 0.0001 · ~$0.044/pip/lot'},
+  EURDKK:{pipSize:0.0001,pipValueUSD:1.44,note:'1 pip = 0.0001 · ~$1.44/pip/lot'},
+  EURGBP:{pipSize:0.0001,pipValueUSD:12.60,note:'1 pip = 0.0001 · ~$12.60/pip/lot'},
+  EURHKD:{pipSize:0.0001,pipValueUSD:1.28,note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
+  EURHUF:{pipSize:0.01,pipValueUSD:0.0027,note:'1 pip = 0.01 · ~$0.0027/pip/lot'},
+  EURJPY:{pipSize:0.01,pipValueUSD:6.58,note:'1 pip = 0.01 · ~$6.58/pip/lot'},
+  EURNOK:{pipSize:0.0001,pipValueUSD:0.92,note:'1 pip = 0.0001 · ~$0.92/pip/lot'},
+  EURNZD:{pipSize:0.0001,pipValueUSD:5.95,note:'1 pip = 0.0001 · ~$5.95/pip/lot'},
+  EURPLN:{pipSize:0.0001,pipValueUSD:2.44,note:'1 pip = 0.0001 · ~$2.44/pip/lot'},
+  EURSEK:{pipSize:0.0001,pipValueUSD:0.93,note:'1 pip = 0.0001 · ~$0.93/pip/lot'},
+  EURSGD:{pipSize:0.0001,pipValueUSD:7.45,note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
+  EURTRY:{pipSize:0.0001,pipValueUSD:0.029,note:'1 pip = 0.0001 · ~$0.029/pip/lot'},
+  EURZAR:{pipSize:0.0001,pipValueUSD:0.55,note:'1 pip = 0.0001 · ~$0.55/pip/lot'},
+  GBPAUD:{pipSize:0.0001,pipValueUSD:6.40,note:'1 pip = 0.0001 · ~$6.40/pip/lot'},
+  GBPCAD:{pipSize:0.0001,pipValueUSD:7.30,note:'1 pip = 0.0001 · ~$7.30/pip/lot'},
+  GBPCHF:{pipSize:0.0001,pipValueUSD:11.20,note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
+  GBPHKD:{pipSize:0.0001,pipValueUSD:1.28,note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
+  GBPJPY:{pipSize:0.01,pipValueUSD:6.58,note:'1 pip = 0.01 · ~$6.58/pip/lot'},
+  GBPNZD:{pipSize:0.0001,pipValueUSD:5.95,note:'1 pip = 0.0001 · ~$5.95/pip/lot'},
+  GBPPLN:{pipSize:0.0001,pipValueUSD:2.44,note:'1 pip = 0.0001 · ~$2.44/pip/lot'},
+  GBPSGD:{pipSize:0.0001,pipValueUSD:7.45,note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
+  GBPZAR:{pipSize:0.0001,pipValueUSD:0.55,note:'1 pip = 0.0001 · ~$0.55/pip/lot'},
+  AUDCAD:{pipSize:0.0001,pipValueUSD:7.30,note:'1 pip = 0.0001 · ~$7.30/pip/lot'},
+  AUDCHF:{pipSize:0.0001,pipValueUSD:11.20,note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
+  AUDHKD:{pipSize:0.0001,pipValueUSD:1.28,note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
+  AUDJPY:{pipSize:0.01,pipValueUSD:6.58,note:'1 pip = 0.01 · ~$6.58/pip/lot'},
+  AUDNZD:{pipSize:0.0001,pipValueUSD:5.95,note:'1 pip = 0.0001 · ~$5.95/pip/lot'},
+  AUDSGD:{pipSize:0.0001,pipValueUSD:7.45,note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
+  NZDCAD:{pipSize:0.0001,pipValueUSD:7.30,note:'1 pip = 0.0001 · ~$7.30/pip/lot'},
+  NZDCHF:{pipSize:0.0001,pipValueUSD:11.20,note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
+  NZDHKD:{pipSize:0.0001,pipValueUSD:1.28,note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
+  NZDJPY:{pipSize:0.01,pipValueUSD:6.58,note:'1 pip = 0.01 · ~$6.58/pip/lot'},
+  NZDSGD:{pipSize:0.0001,pipValueUSD:7.45,note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
+  CADCHF:{pipSize:0.0001,pipValueUSD:11.20,note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
+  CADHKD:{pipSize:0.0001,pipValueUSD:1.28,note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
+  CADJPY:{pipSize:0.01,pipValueUSD:6.58,note:'1 pip = 0.01 · ~$6.58/pip/lot'},
+  CADSGD:{pipSize:0.0001,pipValueUSD:7.45,note:'1 pip = 0.0001 · ~$7.45/pip/lot'},
+  CHFHKD:{pipSize:0.0001,pipValueUSD:1.28,note:'1 pip = 0.0001 · ~$1.28/pip/lot'},
+  CHFJPY:{pipSize:0.01,pipValueUSD:6.58,note:'1 pip = 0.01 · ~$6.58/pip/lot'},
+  CHFZAR:{pipSize:0.0001,pipValueUSD:0.55,note:'1 pip = 0.0001 · ~$0.55/pip/lot'},
+  SGDCHF:{pipSize:0.0001,pipValueUSD:11.20,note:'1 pip = 0.0001 · ~$11.20/pip/lot'},
+  SGDJPY:{pipSize:0.01,pipValueUSD:6.58,note:'1 pip = 0.01 · ~$6.58/pip/lot'},
+  HKDJPY:{pipSize:0.0001,pipValueUSD:0.84,note:'1 pip = 0.0001 · ~$0.84/pip/lot'},
+  TRYJPY:{pipSize:0.0001,pipValueUSD:0.19,note:'1 pip = 0.0001 · ~$0.19/pip/lot'},
+  ZARJPY:{pipSize:0.0001,pipValueUSD:0.36,note:'1 pip = 0.0001 · ~$0.36/pip/lot'},
 };
 
 const TO_USD={USD:1.000,EUR:1.082,GBP:1.260,JPY:0.0066,AUD:0.635,CAD:0.730,CHF:1.120,NZD:0.595,SGD:0.745,ZAR:0.055};
@@ -613,7 +488,9 @@ document.getElementById('pair-select').addEventListener('change',function(){
     el.disabled=locked;
     el.placeholder=locked?'Select a pair first':(id==='pips-input'?'e.g. 20':id==='risk-input'?'e.g. 30':'1.08500');
   });
-  updateBadge(); recalcPips(); calculate();
+  updateBadge();
+
+ recalcPips(); calculate();
 });
 
 function updateBadge(){
@@ -640,6 +517,7 @@ document.getElementById('open-price').addEventListener('input',recalcPips);
 document.getElementById('close-price').addEventListener('input',recalcPips);
 document.getElementById('pips-input').addEventListener('input',calculate);
 document.getElementById('risk-input').addEventListener('input',calculate);
+document.getElementById('rr-input').addEventListener('input',calculate);
 document.getElementById('risk-currency').addEventListener('change',()=>{updateRiskCurrency();calculate();});
 
 function recalcPips(){
@@ -686,40 +564,81 @@ function calculate(){
   rc.style.animation='none'; rc.offsetHeight; rc.style.animation='';
 
   const rl=parseFloat(lotSize.toFixed(2));
-  const actualUSD=rl*pips*p.pipValueUSD;
-  const actualC=actualUSD/toUsdRate;
+  const actualC=(rl*pips*p.pipValueUSD)/toUsdRate;
   const diff=actualC-riskRaw;
   const ds=diff<0?'-':'+';
+
   document.getElementById('actual-risk-value').textContent=actualC.toFixed(2);
   document.getElementById('actual-risk-unit').textContent=currency;
+  document.getElementById('actual-diff-note').innerHTML='You entered <span>'+riskRaw.toFixed(2)+' '+currency+'</span> risk. After rounding to <span>'+rl.toFixed(2)+' lots</span>, actual exposure is <span>'+actualC.toFixed(2)+' '+currency+'</span> (<span>'+ds+Math.abs(diff).toFixed(2)+' '+currency+'</span> difference).';
+
+  const fmt=l=>({lots:l.toFixed(2),risk:(Math.max(l,0)*pips*p.pipValueUSD/toUsdRate).toFixed(2)});
+  const lotLow=parseFloat((rl-0.01).toFixed(2));
+  const lotHigh=parseFloat((rl+0.01).toFixed(2));
+  const low=fmt(lotLow>0?lotLow:0);
+  const mid=fmt(rl);
+  const high=fmt(lotHigh);
+
+  document.getElementById('nearby-low-label').textContent=low.lots+' lots';
+  document.getElementById('nearby-low-value').textContent=(lotLow>0?low.risk+' '+currency:'N/A');
+  document.getElementById('nearby-mid-label').textContent=mid.lots+' lots (recommended)';
+  document.getElementById('nearby-mid-value').textContent=mid.risk+' '+currency;
+  document.getElementById('nearby-high-label').textContent=high.lots+' lots';
+  document.getElementById('nearby-high-value').textContent=high.risk+' '+currency;
+
+  // RR in actual panel
+  const rr2=parseFloat(document.getElementById('rr-input').value);
+  const hasRR=!isNaN(rr2)&&rr2>0;
+  const profitBlock=document.getElementById('actual-rr-profit-block');
+  const rrLegend=document.getElementById('nearby-rr-legend');
+  if(hasRR){
+    const actualProfit=actualC*rr2;
+    document.getElementById('actual-rr-label').textContent=rr2.toFixed(1);
+    document.getElementById('actual-profit-value').textContent=actualProfit.toFixed(2);
+    document.getElementById('actual-profit-unit').textContent=currency;
+    profitBlock.style.display='block';
+
+    // Nearby profits
+    const calcProfit=riskVal=>(parseFloat(riskVal)*rr2).toFixed(2);
+    const lowProfit=lotLow>0?calcProfit(low.risk):'N/A';
+    const midProfit=calcProfit(mid.risk);
+    const highProfit=calcProfit(high.risk);
+    ['low','mid','high'].forEach((k,i)=>{
+      const el=document.getElementById('nearby-'+k+'-profit');
+      const val=[lowProfit,midProfit,highProfit][i];
+      el.textContent=val!=='N/A'?'→ '+val+' '+currency+' profit':'';
+      el.style.display=val!=='N/A'?'inline':'none';
+    });
+    rrLegend.style.display='block';
+  } else {
+    profitBlock.style.display='none';
+    ['low','mid','high'].forEach(k=>{
+      document.getElementById('nearby-'+k+'-profit').style.display='none';
+    });
+    rrLegend.style.display='none';
+  }
+
   document.getElementById('actual-lots').textContent=rl.toFixed(2)+' lots';
   document.getElementById('actual-pips').textContent=pips.toFixed(1);
   document.getElementById('actual-pipval').textContent='$'+p.pipValueUSD.toFixed(2);
   document.getElementById('actual-formula').textContent=rl.toFixed(2)+' x '+pips.toFixed(1)+' x $'+p.pipValueUSD.toFixed(2);
-  document.getElementById('actual-diff-note').innerHTML='You entered <span>'+riskRaw.toFixed(2)+' '+currency+'</span> risk. After rounding to <span>'+rl.toFixed(2)+' lots</span>, actual exposure is <span>'+actualC.toFixed(2)+' '+currency+'</span> (<span>'+ds+Math.abs(diff).toFixed(2)+' '+currency+'</span> difference).';
-  // Nearby lot sizes (+/- 0.01)
-  const step = 0.01;
-  const lotLow = parseFloat((rl - step).toFixed(2));
-  const lotHigh = parseFloat((rl + step).toFixed(2));
-  const fmt = (l) => {
-    const r = l * pips * p.pipValueUSD / toUsdRate;
-    return { lots: l.toFixed(2), risk: r.toFixed(2) };
-  };
-  const low = fmt(lotLow > 0 ? lotLow : 0);
-  const mid = fmt(rl);
-  const high = fmt(lotHigh);
-
-  document.getElementById('nearby-low-label').textContent  = low.lots + ' lots';
-  document.getElementById('nearby-low-value').textContent  = low.lots > 0 ? low.risk + ' ' + currency : 'N/A';
-  document.getElementById('nearby-mid-label').textContent  = mid.lots + ' lots (recommended)';
-  document.getElementById('nearby-mid-value').textContent  = mid.risk + ' ' + currency;
-  document.getElementById('nearby-high-label').textContent = high.lots + ' lots';
-  document.getElementById('nearby-high-value').textContent = high.risk + ' ' + currency;
 
   document.getElementById('actual-placeholder-card').style.display='none';
   document.getElementById('actual-main-card').style.display='block';
   document.getElementById('actual-nearby-card').style.display='block';
   document.getElementById('actual-detail-card').style.display='block';
+
+  // RR calculation
+  const rr = parseFloat(document.getElementById('rr-input').value);
+  const rrCard = document.getElementById('rr-result-card');
+  if(!isNaN(rr) && rr > 0){
+    const rewardPips = pips * rr;
+    const profit = riskRaw * rr;
+    document.getElementById('rr-reward-pips').textContent = rewardPips.toFixed(1);
+    if(rrCard) rrCard.style.display = 'block';
+  } else {
+    if(rrCard) rrCard.style.display = 'none';
+  }
 }
 
 function hideResult(){
